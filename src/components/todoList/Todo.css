@@ -1,0 +1,15 @@
+.todo{
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.task-item{
+    display: flex;
+    gap: 10px;    
+    align-items: center;
+    padding: 10px 0;
+}
+
+.task-item button{
+    margin-left: auto;
+}

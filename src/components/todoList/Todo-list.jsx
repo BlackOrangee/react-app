@@ -3,25 +3,36 @@ import './Todo.css';
 import TodoCreate from './Todo-create';
 import TodoFilter from './Todo-filter';
 import TodoItem from './Todo-item';
+import { taskList } from "./taskList";
+
+
+
 
 const TodoList = () => {
+    const [tasks, setTasks] = useState(taskList);
+  
+    const addTask = () => { 
+      alert('add')
+    }
+  
+  
     return (
-        <div className="todo">
-            <h1>TodoList</h1>
-
-            <TodoCreate />
-
-            <div>
-                <TodoFilter />
-
-                <div className="task-list">
-                    <TodoItem title="Task 1" isDone={true} />
-                    <TodoItem title="Task 2" isDone={false} />
-                    <TodoItem title="Task 3" isDone={false} />
-                </div>
-            </div>
+      <div className="todo">
+        <h1>Todo List</h1>
+        <TodoCreate addTask={addTask} />
+        <div>
+          <TodoFilter />
+          <div className="task-list">
+            {tasks.map((task) => (
+              <TodoItem
+                key={task.id}
+                task={task}
+              />
+            ))}
+          </div>
         </div>
+      </div>
     );
-}
+  };
 
 export default TodoList;

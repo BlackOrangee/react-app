@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useState } from "react";
+// import React from 'react';
 import Card from './Card';
 import './ShopCards.css';
+// import { itemList } from './itemList.js';
 
 const ShopCards = () => {
+    const [itemList, setItem] = useState(taskList);
+
+    const addItem = () => { 
+      
+    }
+
     return (
         <div className="cards">
-            <Card img="https://content2.rozetka.com.ua/goods/images/preview/427388592.jpg" title="Викрутка з набором" price="1 090" goodUrl="https://reactjs.org/"/>
-            <Card img="https://content1.rozetka.com.ua/goods/images/preview/418130709.jpg" title="Викрутка акумуляторна" price="1 399" goodUrl="https://reactjs.org/"/>
-            <Card img="https://content2.rozetka.com.ua/goods/images/preview/351961559.jpg" title="Викрутка електрична" price="895" goodUrl="https://reactjs.org/"/>
-            <Card img="https://content1.rozetka.com.ua/goods/images/preview/410605834.png" title="Електровикрутка Xiaomi" price="905" goodUrl="https://reactjs.org/"/>
+            {itemList.map((item) => (
+                <Card key={item.id} img={item.img} title={item.title} price={item.price} url={item.url} />
+            ))}
         </div>
     );
 }

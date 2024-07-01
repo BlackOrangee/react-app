@@ -5,6 +5,7 @@ export const itemList = [
         title: "Викрутка з набором",
         price: 1090,
         url: "https://reactjs.org/",
+        details: "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
         id: 2,
@@ -12,6 +13,7 @@ export const itemList = [
         title: "Викрутка акумуляторна",
         price: 1399,
         url: "https://reactjs.org/",
+        details: "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
         id: 3,
@@ -19,6 +21,7 @@ export const itemList = [
         title: "Викрутка електрична",
         price: 895,
         url: "https://reactjs.org/",
+        details: "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     },
     {
         id: 4,
@@ -26,5 +29,6 @@ export const itemList = [
         title: "Електровикрутка Xiaomi",
         price: 905,
         url: "https://reactjs.org/",
+        details: "lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
     }
 ]

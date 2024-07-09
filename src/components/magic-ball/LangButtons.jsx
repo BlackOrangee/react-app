@@ -1,10 +1,21 @@
 import React from 'react';
+import './MagicBall.css';
 
-const LangButtons = ({ lang, setLang }) => {
+const LangButtons = ({ lang, changeLang }) => {
     return (
         <div style={{ textAlign: 'center' }}>
-            <button onClick={() => setLang('en')} disabled={lang === 'en'}>English</button>
-            <button onClick={() => setLang('ua')} disabled={lang === 'ua'}>Українська</button>
+            <button className='lang-buttons'
+                onClick={() => changeLang('en')}
+                disabled={lang === 'en'}
+            >
+                English
+            </button>
+            <button className='lang-buttons'
+                onClick={() => changeLang('ua')}
+                disabled={lang === 'ua'}
+            >
+                Українська
+            </button>
         </div>
     );
 };

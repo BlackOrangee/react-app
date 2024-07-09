@@ -1,77 +1,65 @@
 import React, { useState } from 'react';
-import ballImage from './images/ball.png';
-import ballHoleImage from './images/ball-hole.png';
 import './MagicBall.css';
 import answers from './answers.js';
 import LangButtons from './LangButtons.jsx';
+import MagicBallGlow from './MagicBall-glow.jsx';
+import MagicBallAnswer from './MagicBall-answer.jsx';
+import MagicBallBody from './MagicBall-body.jsx';
 
 
 
 const MagicBall = () => {
 
-    const [answer, setAnswer] = useState('');
     const [lang, setLang] = useState('ua');
+    const [answer, setAnswer] = useState(answers[0][lang]);
     const [shaking, setShaking] = useState(false);
 
     const handleShake = () => {
-        const randomIndex = Math.floor(Math.random() * answers.length);
+
+        let randomIndex = 0;
+
+        while(randomIndex === 0) {
+            randomIndex = Math.floor(Math.random() * answers.length);
+        }
+
         setShaking(true);
-        setTimeout(() => setShaking(false), 1000); 
+        setTimeout(() => setShaking(false), 1000);
         setAnswer(answers[randomIndex][lang]);
 
     };
 
+    const onLangChange = (e) => {
+        answers.find(answer => {
+            if (lang === 'en' && answer.en === e) {
+                    setAnswer(answer.ua);
+            }
+            else if (lang === 'ua' && answer.ua === e) {
+                setAnswer(answer.en);
+            }
+        })
+    };
+
+    const changeLang = (e) => {
+        setLang(e);
+        onLangChange(answer);
+    };
+
     return (
         <>
-            <LangButtons lang={lang} setLang={setLang} />
+            <LangButtons lang={lang} changeLang={changeLang} />
             <div
-                className={shaking ? 'shake' : ''}
+                className={`${shaking ? 'shake' : ''} `}
                 onClick={handleShake}
-                onMouseEnter={() => document.body.style.cursor = 'pointer'}
-                onMouseLeave={() => document.body.style.cursor = 'default'}
                 style={{
                     position: 'relative',
-                    cursor: 'pointer',
-                    marginTop: '300px'
+                    cursor: 'pointer',  
+                    marginTop: '400px'
                 }}
             >
-                <img
-                    src={ballImage} alt="Magic Ball"
-                    style={{
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)'
-                    }}
-                />
-                <img
-                    src={ballHoleImage} alt="Magic Ball"
-                    style={{
-                        position: 'absolute',
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)'
-                    }}
-                />
-                {<p 
-                style={{
-                    visibility: shaking ? 'hidden' : 'visible',
-                    fontSize: '16px',
-                    color: 'white',
-                    margin: '0',
-                    width: '120px',
-                    textAlign: 'center',
-                    position: 'absolute',
-                    top: '40%',
-                    left: '50%',
-                    transform: 'translate(-50%, -70%)'
-                }}
-                >
-                    {answer}
-                </p>}
+                <MagicBallBody />
+                <MagicBallAnswer answer={answer} shaking={shaking} />
             </div>
-
-
+            <MagicBallGlow />
         </>
     );
 }

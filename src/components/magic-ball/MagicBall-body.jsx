@@ -9,7 +9,7 @@ const MagicBallBody = ({shaking}) => {
         <>
             <img
                 src={ballImage} alt="Magic Ball"
-                className="ballBodyPosition"
+                className="ballBodyPosition ballGlow"
             />
             <img
                 src={ballHoleImage} alt="Magic Hole"

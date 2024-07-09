@@ -51,7 +51,7 @@ const MagicBall = () => {
         <>
             <LangButtons lang={lang} changeLang={changeLang} />
             <div
-                className={`${shaking ? 'shake' : ''} `}
+                className={`${shaking ? 'shake' : ''}`}
                 onClick={handleShake}
                 style={{
                     position: 'relative',

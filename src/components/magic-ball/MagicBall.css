@@ -17,6 +17,12 @@
   animation-iteration-count: infinite;
 }
 
+.ballGlow {
+  -webkit-box-shadow:0px 0px 19px 0px rgba(154,214,154,0.47);
+  -moz-box-shadow: 0px 0px 19px 0px rgba(154,214,154,0.47);
+  box-shadow: 0px 0px 19px 0px rgba(154,214,154,0.47);
+}
+
 .glow {
   -webkit-box-shadow: 0px 0px 111px 200px rgba(16,124,16,0.46);
   -moz-box-shadow: 0px 0px 111px 200px rgba(16,124,16,0.46);
@@ -40,7 +46,7 @@ body {background-color: black;}
 
 .answer {
   font-size: 16px;
-  color: white;
+  color: rgb(247, 239, 239);
   margin: 0;
   width: 120px;
   text-align: center;
@@ -56,5 +62,5 @@ body {background-color: black;}
 }
 
 .fade-in {
-  animation: fadeIn 1.5s;
+  animation: fadeIn 2s;
 }

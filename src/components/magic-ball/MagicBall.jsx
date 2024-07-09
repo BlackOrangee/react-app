@@ -14,16 +14,19 @@ const MagicBall = () => {
     const [answer, setAnswer] = useState(answers[0][lang]);
     const [shaking, setShaking] = useState(false);
 
+
     const handleShake = () => {
 
         let randomIndex = 0;
 
-        while(randomIndex === 0) {
+        while (randomIndex === 0) {
             randomIndex = Math.floor(Math.random() * answers.length);
         }
 
         setShaking(true);
-        setTimeout(() => setShaking(false), 1000);
+
+        setTimeout(() => { setShaking(false) }, 1000);
+
         setAnswer(answers[randomIndex][lang]);
 
     };
@@ -31,7 +34,7 @@ const MagicBall = () => {
     const onLangChange = (e) => {
         answers.find(answer => {
             if (lang === 'en' && answer.en === e) {
-                    setAnswer(answer.ua);
+                setAnswer(answer.ua);
             }
             else if (lang === 'ua' && answer.ua === e) {
                 setAnswer(answer.en);
@@ -52,11 +55,11 @@ const MagicBall = () => {
                 onClick={handleShake}
                 style={{
                     position: 'relative',
-                    cursor: 'pointer',  
+                    cursor: 'pointer',
                     marginTop: '400px'
                 }}
             >
-                <MagicBallBody />
+                <MagicBallBody shaking={shaking} />
                 <MagicBallAnswer answer={answer} shaking={shaking} />
             </div>
             <MagicBallGlow />

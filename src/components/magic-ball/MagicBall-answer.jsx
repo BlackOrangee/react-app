@@ -2,8 +2,9 @@ import React from 'react';
 
 const MagicBallAnswer = ({ answer, shaking }) => {
     return (
-        <p className='answer'
-            style={{ visibility: shaking ? 'hidden' : 'visible' }}>
+        <p 
+            className={`answer ${!shaking ? 'fade-in' : ''}`}
+            style={{visibility: !shaking ? 'visible' : 'hidden'}}>
             {answer}
         </p>
     );

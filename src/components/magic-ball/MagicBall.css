@@ -29,7 +29,10 @@
   box-shadow: 0px 0px 111px 200px rgba(16,124,16,0.46);
 }
 
-body {background-color: black;}
+body {
+  background-color: black;
+  overflow-x: hidden;
+}
 
 .lang-buttons {
   background-color: rgba(30, 212, 39, 0.603);

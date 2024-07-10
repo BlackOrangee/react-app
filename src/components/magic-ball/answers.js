@@ -49,6 +49,7 @@ const answers = [
     { id: 48, en: "As if. Nice try, though.", ua: "Ніби як. Хороша спроба, втім." },
     { id: 49, en: "Better luck next time. Or not.", ua: "Краще пощастить наступного разу. Або ні." },
     { id: 50, en: "Keep dreaming. It's cute.", ua: "Продовжуй мріяти. Це мило." },
+    { id: 51, en: "Retrograde Mercury blocks the view of the future.", ua: "Ретроградний Меркурій блокує бачення майбутнього." },
 ];
 
 

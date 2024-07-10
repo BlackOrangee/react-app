@@ -32,13 +32,16 @@ const MagicBall = () => {
     };
 
     const onLangChange = (e) => {
-        answers.find(answer => {
+        answers.find((answer) => {
             if (lang === 'en' && answer.en === e) {
                 setAnswer(answer.ua);
+                return true;
             }
             else if (lang === 'ua' && answer.ua === e) {
                 setAnswer(answer.en);
+                return true;
             }
+            return false;
         })
     };
 

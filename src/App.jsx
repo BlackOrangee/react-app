@@ -1,4 +1,4 @@
-import ShopCards from "./components/hw-1-shop-cards/ShopCards";
+import ShopCards from "./components/hw-4-shop-cards/ShopCards";
 
 function App() {
   return (

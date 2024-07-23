@@ -1,11 +1,12 @@
-import TodoList from "./components/todoList/Todo-list";
-
+import React from 'react';
+import { Link, Outlet } from 'react-router-dom';
+import Header from './components/header/Header';
 function App() {
   return (
     <>
-      <TodoList />
+      <Header />
 
-      
+      <Outlet />
     </>
   );
 }

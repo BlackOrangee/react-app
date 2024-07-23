@@ -1,0 +1,11 @@
+header{
+    background-color: aliceblue;
+}
+
+header nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 0;
+}

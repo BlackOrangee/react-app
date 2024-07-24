@@ -1,19 +1,22 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useReducer, useState, useMemo, useCallback } from "react";
 import "./Todo.css";
 import TodoCreate from "./Todo-create";
 import TodoFilter from "./Todo-filter";
 import TodoItem from "./Todo-item";
 import { taskList } from "./taskList";
 import toDoReducer from "../../reducers/todoReducer";
-import { type } from "@testing-library/user-event/dist/type";
+import { actions } from "../../reducers/todoReducer";
 
+const initTasks = () => {
+  const storedTasks = localStorage.getItem('tasks');
+  return storedTasks ? JSON.parse(storedTasks) : taskList;
+}
 
 const TodoList = () => {
-  const [tasks, dispatch] = useReducer(toDoReducer, []);
-  const [currentFilter, setCurrentFilter] = useState('All tasks');
+  const [tasks, dispatch] = useReducer(toDoReducer, initTasks());
+  const [currentFilter, setCurrentFilter] = useState('All');
 
-
-  useEffect(() => { 
+  useEffect(() => {
     const storedTasks = localStorage.getItem('tasks');
     dispatch({
       type: 'SET_TASKS',
@@ -23,41 +26,27 @@ const TodoList = () => {
 
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
-   }, [tasks]);
+  }, [tasks]);
 
-  const addTask = (title) => { 
-    dispatch({
-      type: 'ADD_TASK',
-      payload: { title }
-    });
-  }
+  const addTask = useCallback((title) => {
+    dispatch({ type: actions.ADD_TASK, payload: { title } });
+  }, []);
+  const deleteTask = useCallback((id) => {
+    dispatch({ type: actions.DELETE_TASK, payload: { id } });
+  }, []);
+  const toggleComplete = useCallback((id) => {
+    dispatch({ type: actions.TOGGLE_COMPLETE, payload: { id } });
+  }, []);
 
-  const deleteTask = (id) => { 
-    dispatch({
-      type: 'DELETE_TASK',
-      payload: { id }
-    })
-  }
+  const updateTask = useCallback((id, newTitle) => {
+    dispatch({ type: actions.UPDATE_TASK, payload: { id, newTitle } });
+  }, []);
 
-  const toggleComplete = (id) => { 
-    dispatch({
-      type: 'TOGGLE_COMPLETE',
-      payload: { id }
-    })
-  }
-
-  const updateTask = (id, newTitle) => { 
-    dispatch({
-      type: 'UPDATE_TASK',
-      payload: { id, newTitle }
-    });
-  }
-
-  const filterMap = {
-    'All tasks': () => true,
+  const filterMap = useMemo(() => ({
+    All: () => true,
+    Todo: task => !task.completed,
     Done: task => task.completed,
-    ToDo: task => !task.completed
-  }
+  }), []);
 
   return (
     <div className="todo">

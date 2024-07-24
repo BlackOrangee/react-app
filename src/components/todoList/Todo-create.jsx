@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 
 const TodoCreate = ({ addTask }) => {
   const [title, setTitle] = useState("");
   const [titleError, setTitleError] = useState(null);
 
-  const addTaskHandler = () => {
+  const addTaskHandler = useCallback(() => {
     if (title.trim().length < 3) {
       return setTitleError("Title is invalid");
     }
     addTask(title);
     setTitle("");
     setTitleError(null);
-  };
+  }, [title, addTask]);
 
   return (
     <div>

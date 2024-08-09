@@ -40,8 +40,8 @@ body {
 
 
 .card-grid{ 
-    width: 194px;
-    height: 320px;
+    width: 224px;
+    height: 310px;
     display: flex;
     flex-direction: column;
     align-items: start;
@@ -49,6 +49,15 @@ body {
     border: 1px solid rgb(236, 236, 236);
     padding: 15px;
 }
+
+.card-grid > div{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 196px;
+    height: 10px;
+    position: absolute;
+}
+
 
 .card-grid:hover{
     border: 1px solid rgb(0, 0, 0);
@@ -64,6 +73,16 @@ body {
     gap: 10px;
     border: 1px solid rgb(236, 236, 236);
     padding: 15px;
+}
+
+.card-column > div > div{
+    display: flex;
+    flex-direction: row-reverse;
+    /* width: 196px; */
+    height: 0px;
+    position: relative;
+    top: 10px;
+    right: 0px;
 }
 
 .card-column:hover{

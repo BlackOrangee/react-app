@@ -1,0 +1,30 @@
+.favorite-item {
+    display: flex;
+    padding: 10px;
+    border: 1px solid rgb(77, 77, 77);
+}
+
+.favorite-item>a:first-child {
+    max-width: 194px;
+    min-width: 194px;
+    max-height: 210px;
+    min-height: 210px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.favorite-item-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.favorite-item-details > h4 {
+    font-size: 24px;
+}
+
+.favorite-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

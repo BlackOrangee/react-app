@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './AddItemForm.css';
-import { itemList } from './itemList.js';
+import { itemList } from '../../resources/itemList.js';
 
 const AddItemForm = ({ addItem }) => {
 

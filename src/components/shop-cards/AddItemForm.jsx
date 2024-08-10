@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './AddItemForm.css';
 import { itemList } from '../../resources/itemList.js';
+import { FileAddOutlined } from '@ant-design/icons';
+import IconButton from '../IconButton.jsx';
 
 const AddItemForm = ({ addItem }) => {
 
@@ -27,7 +29,7 @@ const AddItemForm = ({ addItem }) => {
 
     return (
         <div>
-            <button type="button" onClick={toggleForm}>Add item</button>
+            <IconButton icon={FileAddOutlined} onClick={toggleForm} size={40} color="grey" iconColor="black" />
 
             {formVisible && (
                 <form id="add_item_form" onSubmit={(e) => {
@@ -35,43 +37,43 @@ const AddItemForm = ({ addItem }) => {
                     onSubmit();
                 }}>
                     <label htmlFor="image_url" id="image_url_label">Image url</label>
-                    <input 
-                        type="text" 
-                        id="image_url" 
-                        value={image_url} 
-                        onChange={(e) => setImage_url(e.target.value)} 
+                    <input
+                        type="text"
+                        id="image_url"
+                        value={image_url}
+                        onChange={(e) => setImage_url(e.target.value)}
                     />
 
                     <label htmlFor="title" id="title_label">Title</label>
-                    <input 
-                        type="text" 
-                        id="title" 
-                        value={title} 
-                        onChange={(e) => setTitle(e.target.value)} 
+                    <input
+                        type="text"
+                        id="title"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
                     />
 
                     <label htmlFor="price" id="price_label">Price</label>
-                    <input 
-                        type="text" 
-                        id="price" 
-                        value={price} 
-                        onChange={(e) => setPrice(e.target.value)} 
+                    <input
+                        type="text"
+                        id="price"
+                        value={price}
+                        onChange={(e) => setPrice(e.target.value)}
                     />
 
                     <label htmlFor="url" id="url_label">Url</label>
-                    <input 
-                        type="text" 
-                        id="url" 
-                        value={url} 
-                        onChange={(e) => setUrl(e.target.value)} 
+                    <input
+                        type="text"
+                        id="url"
+                        value={url}
+                        onChange={(e) => setUrl(e.target.value)}
                     />
 
                     <label htmlFor="details" id="details_label">Details</label>
-                    <input 
-                        type="text" 
-                        id="details" 
-                        value={details} 
-                        onChange={(e) => setDetails(e.target.value)} 
+                    <input
+                        type="text"
+                        id="details"
+                        value={details}
+                        onChange={(e) => setDetails(e.target.value)}
                     />
                     <button type="submit">Add</button>
                 </form>

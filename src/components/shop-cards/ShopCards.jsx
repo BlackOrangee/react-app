@@ -5,6 +5,12 @@ import './ShopCards.css';
 import { itemList } from '../../resources/itemList.js';
 import AddItemForm from "./AddItemForm.jsx";
 import ShopCardsSorting from "./ShopCards-sorting.jsx";
+import { UnorderedListOutlined } from '@ant-design/icons';
+import IconButton from "../IconButton.jsx";
+import { AppstoreOutlined } from "@ant-design/icons";
+import { HeartOutlined, HeartFilled } from '@ant-design/icons';
+
+
 
 const ShopCards = () => {
     const [items, setItems] = useState(itemList);
@@ -51,18 +57,26 @@ const ShopCards = () => {
     }, [items, sorting, sortingMap]);
 
     return (
-        <>
-            <AddItemForm addItem={addItem} />
+        <div>
+            <div style={{ display: 'flex', flexDirection: 'row', gap: '10px', marginTop: '20px', justifyContent: 'space-between', alignItems: 'center' }}>
 
-            <button type="button" onClick={toggleView}>
-                {view === 'grid' ? 'View as list' : 'View as grid'}
-            </button>
+                <div style={{ display: 'flex', flexDirection: 'row', gap: '10px' }}>
+                    <IconButton icon={view === 'grid' ? UnorderedListOutlined : AppstoreOutlined} onClick={toggleView} size={40} color="grey" iconColor="black" />
 
-            <ShopCardsSorting sorting={sorting} handleSortingChange={handleSortingChange} sortingMap={sortingMap} />
+                    <ShopCardsSorting sorting={sorting} handleSortingChange={handleSortingChange} sortingMap={sortingMap} />
+                </div>
 
-            <Link to={{ pathname: "/favorites", state: { favorites: items.filter(item => favorites.includes(item.id)) } }}>
-                <button>View Favorites</button>
-            </Link>
+                <Link style={{ textDecoration: 'none' }} to={{ pathname: "/favorites", state: { favorites: items.filter(item => favorites.includes(item.id)) } }}>
+                    <IconButton icon={HeartFilled} size={40} color="grey" iconColor="black" />
+                    
+                    <p style={{visibility: favorites.length === 0 ? 'hidden' : 'visible', paddingBottom: '2px', fontSize: '20px', fontWeight: '450', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%', width: '22px', height: '22px', backgroundColor: 'red',  position: 'relative', right: '-22px', top: '-18px' }}>{favorites.length}</p>
+                </Link>
+
+            </div>
+
+            <div style={{ marginTop: '15px' }} >
+                <AddItemForm addItem={addItem} />
+            </div>
 
             <div className={`cards-${view}`}>
                 {sortedItems.map((item) => (
@@ -80,7 +94,7 @@ const ShopCards = () => {
                     />
                 ))}
             </div>
-        </>
+        </div>
     );
 }
 

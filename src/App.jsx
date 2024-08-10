@@ -1,4 +1,4 @@
-import ShopCards from "./components/hw-4-shop-cards/ShopCards";
+import ShopCards from "./components/shop-cards/ShopCards";
 import FavoriteItemsPage from "./components/favorite/FavoriteItemsPage";
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';

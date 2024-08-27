@@ -31,7 +31,7 @@ const Auth = () => {
         onCancel={handleCancel}
         footer={null}
       >
-        {isModalOpen ? isLoginForm ? <Login /> : <Registration /> : null}
+        {isLoginForm ? <Login /> : <Registration />}
         
         <Button style={{ marginTop: "40px", position: "absolute", right: "20px", bottom : "20px" }} onClick={toggleForm}>
           {isLoginForm ? "Registration" : "Login"}

@@ -1,0 +1,15 @@
+.invalid{
+    color: red;
+}
+
+.valid{
+    color: green;
+}
+
+h1{
+    color: blue;
+}
+
+#id{
+    font-size: 1em;
+}

@@ -118,3 +118,8 @@ body {
 .card h3{
     color: rgb(236, 0, 0);
 }
+
+.card img{
+    max-width: 100%;
+    max-height: 100%;
+}

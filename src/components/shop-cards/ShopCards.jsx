@@ -1,27 +1,36 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import Card from './Card.jsx';
 import './ShopCards.css';
-import { itemList } from '../../resources/itemList.js';
 import AddItemForm from "./AddItemForm.jsx";
 import ShopCardsSorting from "./ShopCards-sorting.jsx";
-import { UnorderedListOutlined } from '@ant-design/icons';
+import { UnorderedListOutlined, AppstoreOutlined, HeartFilled } from '@ant-design/icons';
 import IconButton from "../IconButton.jsx";
-import { AppstoreOutlined } from "@ant-design/icons";
-import { HeartOutlined, HeartFilled } from '@ant-design/icons';
 
 
 
 const ShopCards = () => {
-    const [items, setItems] = useState(itemList);
+    const [items, setItems] = useState([]);
     const [favorites, setFavorites] = useState(() => {
         const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
-        // console.log('Loaded favorites from localStorage:', storedFavorites);
         return storedFavorites;
     });
 
     useEffect(() => {
-        // console.log('Saving favorites to localStorage:', favorites);
+        const fetchItems = async () => {
+            try {
+                const { data } = await axios.get('https://fakestoreapi.com/products');
+                setItems(data);
+            } catch (error) {
+                console.error("error fetching items: ", error);
+            }
+        };
+
+        fetchItems();
+    }, []);
+
+    useEffect(() => {
         localStorage.setItem('favorites', JSON.stringify(favorites));
     }, [favorites]);
 
@@ -84,11 +93,11 @@ const ShopCards = () => {
                         view={view}
                         key={item.id}
                         id={item.id}
-                        img={item.img}
+                        img={item.image}
                         title={item.title}
                         price={item.price}
                         url={item.url}
-                        details={item.details}
+                        details={item.description}
                         isFavorite={favorites.includes(item.id)}
                         toggleFavorite={toggleFavorite}
                     />

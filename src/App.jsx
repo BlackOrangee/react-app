@@ -1,14 +1,12 @@
-import ShopCards from "./components/shop-cards/ShopCards";
-import FavoriteItemsPage from "./components/favorite/FavoriteItemsPage";
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import PostsPage from "./components/posts/post-page";
 
 const App = () => {
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<ShopCards />} />
-                <Route path="/favorites" element={<FavoriteItemsPage />} />
+                <Route path="/" element={<PostsPage />} />
             </Routes>
         </Router>
     );
